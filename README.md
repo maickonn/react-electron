@@ -1,38 +1,39 @@
 ## How to use
-Clone this repo with:
+
+You need of **NodeJS 12 LTS** and **NPM** installed, but you can use **Yarn** instead NPM.
+
+On Windows, run these commands on CMD:
 
     git clone https://www.github.com/Maickonn/react-electron.git react-electron
-Go to react-electron directory:
-
     cd react-electron
-Run:
+    rmdir /Q /S .git
+    npm install
 
-    yarn
-or
+On Linux or MacOS, run these commands on Terminal:
 
+    git clone https://www.github.com/Maickonn/react-electron.git react-electron
+    cd react-electron
+    rm -r .git
     npm install
 
 ## How to run
 To run on development mode, run:
 
-    yarn electron-dev
+    npm run electron-dev
 
-or
-
-    npm electron-dev
 
 ## How to build
 Windows:
 
-    yarn electron-compile-windows
+    npm run electron-compile-windows
 
 Linux:
 
-    yarn electron-compile-linux
+    npm run electron-compile-linux
 
 MacOS:
 
-    yarn electron-compile-macos
+    npm run electron-compile-macos
 
 The files will be generated on **dist** folder.
 
