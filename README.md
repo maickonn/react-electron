@@ -19,21 +19,13 @@ On Linux or MacOS, run these commands on Terminal:
 ## How to run
 To run on development mode, run:
 
-    yarn electron-dev
+    yarn start
 
 
 ## How to build
-Windows:
 
-    yarn electron-compile-windows
+    yarn build
 
-Linux:
-
-    yarn electron-compile-linux
-
-MacOS:
-
-    yarn electron-compile-macos
 
 The files will be generated on **dist** folder.
 

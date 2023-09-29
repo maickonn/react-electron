@@ -1,10 +1,12 @@
 {
   "name": "react-electron",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Your Name"
+  },
   "private": true,
   "homepage": "./",
-  "main": "./public/electron.js",
-  "appId": "com.example.app",
+  "main": "./build/electron.js",
   "build": {
     "win": {
       "icon": "build/icon.ico"
@@ -18,29 +20,29 @@
     }
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "electron-is-dev": "^1.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "electron-is-dev": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.54",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
+    "concurrently": "^8.2.1",
+    "electron": "^26.2.4",
+    "electron-builder": "^24.6.4",
+    "javascript-obfuscator": "^4.1.0",
+    "wait-on": "^7.0.1"
   },
   "scripts": {
     "react-start": "react-scripts start",
-    "react-build": "react-scripts build && javascript-obfuscator ./build/electron.js --output ./build/electron.js",
-    "react-test": "react-scripts test",
-    "electron-dev": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-compile-windows": "npm run react-build && electron-builder -w --dir",
-    "electron-compile-linux": "npm run react-build && electron-builder -l --dir",
-    "electron-compile-macos": "npm run react-build && electron-builder -m --dir"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "react-build": "react-scripts build",
+    "compile-main": "tsc",
+    "obfuscate": "javascript-obfuscator ./build/electron.js --output ./build/electron.js",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run compile-main && electron .\"",
+    "build": "npm run react-build && npm run compile-main && npm run obfuscate && electron-builder --dir"
   },
   "browserslist": {
     "production": [
@@ -53,12 +55,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^5.3.0",
-    "electron": "^10.1.5",
-    "electron-builder": "^22.9.1",
-    "javascript-obfuscator": "^2.8.0",
-    "wait-on": "^5.2.0"
   }
 }
